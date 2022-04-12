@@ -1,8 +1,7 @@
 import React from "react";
-import { useState, useEffect } from "react";
-import { collection, getDocs, addDoc } from "firebase/firestore"; 
+import { useState } from "react";
+import { collection, addDoc } from "firebase/firestore"; 
 import db from '../../../db';
-import { isEmpty } from "@firebase/util";
 
 const AddRestaurant = () => {
   
@@ -26,8 +25,6 @@ const AddRestaurant = () => {
       options: options
     } )
   }
-
-  const [restaurants, setRestaurants] = useState([])
 
   // onChange: type de restaurant
   const handleType = type => {
