@@ -58,6 +58,10 @@ const Restaurant = () => {
                       }
                     </ul>
                 </ul>
+                <Link to={"/restaurants/modifier-restaurant/" + r.id}>
+                    <button>Modifier</button>
+                </Link>
+                <button>Supprimer</button>
               </div>
             )
           })
