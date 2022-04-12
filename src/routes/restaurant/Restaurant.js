@@ -1,6 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { collection, getDocs } from "firebase/firestore";
+import { collection, getDocs, doc, deleteDoc } from "firebase/firestore";
 import "./Restaurant.css";
 import db from "../../db";
 import { Link } from 'react-router-dom';
@@ -21,6 +21,13 @@ const Restaurant = () => {
     getRestaurants()
 
   }, [])
+
+  // Suppression d'un restaurant
+  const deleteRestaurant = async id => {
+    const restaurantRef = doc(db, "restaurant", id)
+    await deleteDoc(restaurantRef)
+    window.location.reload(false)
+  }
 
 
   return (
@@ -61,7 +68,7 @@ const Restaurant = () => {
                 <Link to={"/restaurants/modifier-restaurant/" + r.id}>
                     <button>Modifier</button>
                 </Link>
-                <button>Supprimer</button>
+                <button onClick={ () => deleteRestaurant(r.id) }>Supprimer</button>
               </div>
             )
           })
